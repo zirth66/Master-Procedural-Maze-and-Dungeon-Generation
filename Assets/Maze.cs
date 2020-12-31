@@ -4,25 +4,62 @@ using UnityEngine;
 
 public class Maze : MonoBehaviour
 {
-    public GameObject cube;
+    
     [Range(0, 100)]
     public int width = 30; // x length
     [Range(0, 100)]
     public int depth = 30; // y length
+    public byte[,] map;
 
     // Start is called before the first frame update
     void Start()
     {
-        for(int z = 0; z < depth; z++)
+        InitialiseMap(); // Sets everthing to walls
+        Generate(); // Dig corridors
+        DrawMap();
+    }
+    void InitialiseMap()
+    {
+        map = new byte[width, depth];
+        for (int z = 0; z < depth; z++)
         {
             for (int x = 0; x < width; x++)
             {
-                Vector3 pos = new Vector3(x, 0, z);
-                Instantiate(cube, pos, Quaternion.identity);
+                    map[x, z] = 1; // 1 = wall, 0 = corridor           
             }
         }
     }
 
+    void Generate()
+    {
+        for (int z = 0; z < depth; z++)
+        {
+            for (int x = 0; x < width; x++)
+            {
+
+                if (Random.Range(0, 100) < 50)
+                {
+                    map[x, z] = 0; // 1 = wall, 0 = corridor    
+                }
+            }
+        }
+    }
+
+    void DrawMap()
+    {
+        for (int z = 0; z < depth; z++)
+        {
+            for (int x = 0; x < width; x++)
+            {
+                if (map[x, z] == 1)
+                {
+                    Vector3 pos = new Vector3(x, 0, z);
+                    GameObject wall = GameObject.CreatePrimitive(PrimitiveType.Cube);
+                    wall.transform.position = pos;
+                }
+            }
+        }
+    }
     // Update is called once per frame
     void Update()
     {
