@@ -232,10 +232,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1339319597}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7437dfbd13aed484f8da16012de003ee, type: 3}
+  m_Script: {fileID: 11500000, guid: bab809b9a82c55e45ad5e8ebb2fa6e42, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cube: {fileID: 8457595462604560198, guid: 700f507abb0be9a4297b78d843bc78d8, type: 3}
+  width: 30
+  depth: 30
 --- !u!4 &1339319599
 Transform:
   m_ObjectHideFlags: 0

@@ -57,6 +57,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Maze.cs" />
+    <Compile Include="Assets\Crawler.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

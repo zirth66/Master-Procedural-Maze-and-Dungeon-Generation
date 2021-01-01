@@ -15,7 +15,7 @@ public class Maze : MonoBehaviour
     void Start()
     {
         InitialiseMap(); // Sets everthing to walls
-        Generate(); // Dig corridors
+        Generate(); // Digs corridors
         DrawMap();
     }
     void InitialiseMap()
@@ -30,7 +30,7 @@ public class Maze : MonoBehaviour
         }
     }
 
-    void Generate()
+    public virtual void Generate() // public virtual so we can ovveride it in Crawler.cs
     {
         for (int z = 0; z < depth; z++)
         {
