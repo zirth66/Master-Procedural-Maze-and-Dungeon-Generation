@@ -2,14 +2,26 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Maze : MonoBehaviour
+public class MapLocation
 {
-    
+    public int x;
+    public int z;
+
+    public MapLocation(int _x, int _z)
+    {
+        x = _x;
+        z = _z;
+    }
+}
+
+public class Maze : MonoBehaviour
+{  
     [Range(0, 100)]
     public int width = 30; // x length
     [Range(0, 100)]
     public int depth = 30; // y length
     public byte[,] map;
+    public int scale = 6;
 
     // Start is called before the first frame update
     void Start()
@@ -53,8 +65,9 @@ public class Maze : MonoBehaviour
             {
                 if (map[x, z] == 1)
                 {
-                    Vector3 pos = new Vector3(x, 0, z);
+                    Vector3 pos = new Vector3(x * scale, 0, z * scale);
                     GameObject wall = GameObject.CreatePrimitive(PrimitiveType.Cube);
+                    wall.transform.localScale = new Vector3(scale, scale, scale);
                     wall.transform.position = pos;
                 }
             }
